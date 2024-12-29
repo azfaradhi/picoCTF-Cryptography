@@ -16,17 +16,13 @@ def shift(c, k):
 	t2 = ord(k) - LOWERCASE_OFFSET
 	return ALPHABET[(t1 + t2) % len(ALPHABET)]
 
-
-
-
 flag = "redacted"
-key = "c"
+key = "redacted"
 assert all([k in ALPHABET for k in key])
 assert len(key) == 1
 
 b16 = b16_encode(flag)
 enc = ""
-b17 = "ihjghbjgjhfbhbfdidiffhiiffigfjflfefcidfkfhfifdfcidiiihiefefhfjfefkfffdigididfk"
-for i, c in enumerate(b17):
-	enc += shift(c, key)
+for i, c in enumerate(b16):
+	enc += shift(c, key[i % len(key)])
 print(enc)
